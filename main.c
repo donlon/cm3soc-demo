@@ -69,7 +69,8 @@ int main() {
         while (1) {
         }
     }
-
+    const char *hello_world_text = "Hello World!\r\n";
+    XUartLite_Send(&uart_inst, (u8 *) hello_world_text, strlen(hello_world_text));
     return 0;
 }
 
@@ -80,10 +81,6 @@ void SysTick_Handler() {
         XGpio_DiscreteWrite(&gpio, 1, 0b10);
     }
     if (value % 4 == 0) {
-        char str_buffer[64];
-        int len = snprintf(str_buffer, sizeof(str_buffer),
-                           "Hello from Cortex-M3 soft-core processor, t=%ds\r\n", value / 4);
-        XUartLite_Send(&uart_inst, (u8 *) str_buffer, len);
         xil_printf("Hello from Cortex-M3 soft-core processor, t=%ds\r\n", value / 4);
     }
     value++;
