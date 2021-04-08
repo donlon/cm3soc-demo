@@ -8,12 +8,6 @@ int value = 1;
 XGpio gpio;   /* The driver instance for GPIO Device 0 */
 
 int systick_init() {
-    // https://developer.arm.com/documentation/ka002893/latest
-    SysTick->CTRL = 0;
-    SysTick->VAL = 0; /* Load the SysTick Counter Value */
-    SysTick->CTRL = (SysTick_CTRL_TICKINT_Msk   |  /* Enable SysTick exception */
-                     SysTick_CTRL_ENABLE_Msk) |    /* Enable SysTick system timer */
-                    SysTick_CTRL_CLKSOURCE_Msk;   /* Use processor clock source */
     return SysTick_Config(50e6 / 4); // 4 Hz
 }
 
@@ -36,14 +30,11 @@ int system_init() {
     XGpio_SetDataDirection(&gpio, 1, 0);
     XGpio_DiscreteWrite(&gpio, 1, 0x2);
 
-    // NVIC_EnableIRQ(SysTick_IRQn);
     return status;
 }
 
 int main() {
     system_init();
-    while (1) { // NOLINT
-    }
     return 0;
 }
 

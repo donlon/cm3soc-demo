@@ -108,10 +108,10 @@ void Reset_Handler(void) {
 _Noreturn
 void System_Startup() {
     // load .data segment
-    uint32_t *data_src = &__data_load;
-    uint32_t *data_dst = &__data_start;
-    for (; data_dst < &__data_end;) {
-        *data_dst++ = *data_src++;
+    uint32_t *p_src = &__data_load;
+    uint32_t *p_dst = &__data_start;
+    while (p_dst < &__data_end) {
+        *p_dst++ = *p_src++;
     }
     // CRT startup
     _mainCRTStartup();
