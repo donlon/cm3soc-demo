@@ -69,8 +69,9 @@ int main() {
         while (1) {
         }
     }
-    const char *hello_world_text = "Hello World!\r\n";
-    XUartLite_Send(&uart_inst, (u8 *) hello_world_text, strlen(hello_world_text));
+    xil_printf("\r\n\r\n");
+    xil_printf("=== Cortex-M3 Soc designed by Team CICC2985 ===\r\n");
+    xil_printf("Hello World!\r\n");
     return 0;
 }
 
