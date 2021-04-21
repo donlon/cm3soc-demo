@@ -1,7 +1,4 @@
-.idea/
 .vscode/
-cmake-build*
+.idea/
 
-*.o
-*.a
-*.elf
+cmake-build*

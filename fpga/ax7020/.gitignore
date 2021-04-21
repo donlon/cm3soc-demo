@@ -1,0 +1,15 @@
+*.cache
+*.hw
+*.ip_user_files
+*.runs
+*.sdk
+*.sim
+*.srcs
+
+.Xil
+
+*.log
+*.jou
+
+ip/*
+!ip/*.xci
